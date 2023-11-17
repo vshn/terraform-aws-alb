@@ -6,7 +6,7 @@ resource "aws_iam_policy" "alb_ingress_policy" {
 
 module "alb_ingress_role" {
   source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "5.31.0"
+  version                       = "5.32.0"
   create_role                   = true
   role_description              = "ALB Ingress Controller Role"
   role_name_prefix              = "alb-ingress-controller-role"
