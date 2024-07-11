@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.0.11
+- Update terraform-aws-modules/iam/aws to v5.41.0 
+
 ## v1.0.10
 - Update Terraform terraform-aws-modules/iam/aws to v5.40.0
 
