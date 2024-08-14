@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "alb_controller_policy_doc" {
       "elasticloadbalancing:DescribeTargetGroupAttributes",
       "elasticloadbalancing:DescribeTargetHealth",
       "elasticloadbalancing:DescribeTags",
-      "elasticloadbalancing:AddTags",
+      "elasticloadbalancing:DescribeTrustStores",
     ]
   }
 
@@ -239,6 +239,33 @@ data "aws_iam_policy_document" "alb_controller_policy_doc" {
       "elasticloadbalancing:ModifyTargetGroupAttributes",
       "elasticloadbalancing:DeleteTargetGroup",
     ]
+
+    condition {
+      test     = "Null"
+      variable = "aws:ResourceTag/elbv2.k8s.aws/cluster"
+      values   = ["false"]
+    }
+  }
+
+  statement {
+    sid    = ""
+    effect = "Allow"
+
+    resources = [
+      "arn:aws:elasticloadbalancing:*:*:targetgroup/*/*",
+      "arn:aws:elasticloadbalancing:*:*:loadbalancer/net/*/*",
+      "arn:aws:elasticloadbalancing:*:*:loadbalancer/app/*/*",
+    ]
+
+    actions = [
+      "elasticloadbalancing:AddTags",
+    ]
+
+    condition {
+      test     = "StringEquals"
+      variable = "elasticloadbalancing:CreateAction"
+      values   = ["CreateTargetGroup", "CreateLoadBalancer"]
+    }
 
     condition {
       test     = "Null"
