@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.2.0
+- Add support for configuring ALB SSL Policies
+
 ## v1.1.0
 - Update alb iam policy to newest version
  
