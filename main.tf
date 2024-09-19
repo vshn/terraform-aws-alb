@@ -55,4 +55,10 @@ resource "helm_release" "alb_ingress_controller" {
     value = var.alb_controller_sa_name
     type  = "string"
   }
+
+  set {
+    name  = "defaultSSLPolicy"
+    value = var.alb_controller_default_ssl_policy
+    type  = "string"
+  }
 }

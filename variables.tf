@@ -28,3 +28,9 @@ variable "alb_controller_helm_image_repository" {
   description = "The image repository of the region. I.e. 602401143452.dkr.ecr.eu-west-1.amazonaws.com/amazon/aws-load-balancer-controller. See also https://docs.aws.amazon.com/eks/latest/userguide/add-ons-images.html"
   type        = string
 }
+
+variable "alb_controller_default_ssl_policy" {
+  description = "Default SSL policy for to use for TLS/HTTPS listeners"
+  type        = string
+  default     = "ELBSecurityPolicy-TLS13-1-2-2021-06"
+}
