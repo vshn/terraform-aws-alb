@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.2.1
+- Update terraform-aws-modules/iam/aws to v5.44.1
+
 ## v1.2.0
 - Add support for configuring ALB SSL Policies
 
