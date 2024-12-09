@@ -31,6 +31,7 @@ data "aws_iam_policy_document" "alb_controller_policy_doc" {
       "ec2:DescribeTags",
       "ec2:GetCoipPoolUsage",
       "ec2:DescribeCoipPools",
+      "ec2:GetSecurityGroupsForVpc",
       "elasticloadbalancing:DescribeLoadBalancers",
       "elasticloadbalancing:DescribeLoadBalancerAttributes",
       "elasticloadbalancing:DescribeListeners",
@@ -42,6 +43,8 @@ data "aws_iam_policy_document" "alb_controller_policy_doc" {
       "elasticloadbalancing:DescribeTargetHealth",
       "elasticloadbalancing:DescribeTags",
       "elasticloadbalancing:DescribeTrustStores",
+      "elasticloadbalancing:DescribeListenerAttributes",
+      "elasticloadbalancing:DescribeCapacityReservation",
     ]
   }
 
@@ -238,6 +241,8 @@ data "aws_iam_policy_document" "alb_controller_policy_doc" {
       "elasticloadbalancing:ModifyTargetGroup",
       "elasticloadbalancing:ModifyTargetGroupAttributes",
       "elasticloadbalancing:DeleteTargetGroup",
+      "elasticloadbalancing:ModifyListenerAttributes",
+      "elasticloadbalancing:ModifyCapacityReservation",
     ]
 
     condition {
