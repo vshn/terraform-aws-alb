@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.5.0
+- Update terraform-aws-modules/iam/aws to v5.51.0
+
 ## v1.4.0
 - Update alb iam policy to newest version
 
