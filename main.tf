@@ -26,39 +26,36 @@ resource "helm_release" "alb_ingress_controller" {
   timeout         = 300
   version         = var.alb_controller_helm_chart_version
 
-  set {
-    name  = "image.repository"
-    value = var.alb_controller_helm_image_repository
-    type  = "string"
-  }
-
-  set {
-    name  = "clusterName"
-    value = var.cluster_name
-    type  = "string"
-  }
-
-  set {
-    name  = "serviceAccount.create"
-    value = "true"
-    type  = "string"
-  }
-
-  set {
-    name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-    value = module.alb_ingress_role.iam_role_arn
-    type  = "string"
-  }
-
-  set {
-    name  = "serviceAccount.name"
-    value = var.alb_controller_sa_name
-    type  = "string"
-  }
-
-  set {
-    name  = "defaultSSLPolicy"
-    value = var.alb_controller_default_ssl_policy
-    type  = "string"
-  }
+  set = [
+    {
+      name  = "image.repository"
+      value = var.alb_controller_helm_image_repository
+      type  = "string"
+    },
+    {
+      name  = "clusterName"
+      value = var.cluster_name
+      type  = "string"
+    },
+    {
+      name  = "serviceAccount.create"
+      value = "true"
+      type  = "string"
+    },
+    {
+      name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+      value = module.alb_ingress_role.iam_role_arn
+      type  = "string"
+    },
+    {
+      name  = "serviceAccount.name"
+      value = var.alb_controller_sa_name
+      type  = "string"
+    },
+    {
+      name  = "defaultSSLPolicy"
+      value = var.alb_controller_default_ssl_policy
+      type  = "string"
+    }
+  ]
 }
