@@ -48,7 +48,7 @@ resource "helm_release" "alb_ingress_controller" {
     },
     {
       name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-      value = module.alb_ingress_role.iam_role_arn
+      value = module.alb_ingress_role.arn
       type  = "string"
     },
     {
