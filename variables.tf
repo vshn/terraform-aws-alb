@@ -24,6 +24,11 @@ variable "oidc_provider_url" {
   type        = string
 }
 
+variable "oidc_provider_arn" {
+  description = "The arn of the openid connect provider."
+  type        = string
+}
+
 variable "alb_controller_helm_image_repository" {
   description = "The image repository of the region. I.e. 602401143452.dkr.ecr.eu-west-1.amazonaws.com/amazon/aws-load-balancer-controller. See also https://docs.aws.amazon.com/eks/latest/userguide/add-ons-images.html"
   type        = string

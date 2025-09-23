@@ -3,18 +3,22 @@ resource "aws_iam_policy" "alb_ingress_policy" {
   policy      = data.aws_iam_policy_document.alb_controller_policy_doc.json
 }
 
-
 module "alb_ingress_role" {
-  source                        = "terraform-aws-modules/iam/aws//modules/iam-assumable-role-with-oidc"
-  version                       = "5.60.0"
-  create_role                   = true
-  role_description              = "ALB Ingress Controller Role"
-  role_name_prefix              = "alb-ingress-controller-role"
-  provider_url                  = var.oidc_provider_url
-  role_policy_arns              = [aws_iam_policy.alb_ingress_policy.arn]
-  oidc_fully_qualified_subjects = ["system:serviceaccount:${var.alb_controller_namespace}:${var.alb_controller_sa_name}"]
+  source          = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  version         = "6.2.1"
+  name            = "alb-ingress-controller-role"
+  use_name_prefix = true
+  description     = "ALB Ingress Controller Role"
+  oidc_providers = {
+    provider = {
+      provider_arn               = var.oidc_provider_arn
+      namespace_service_accounts = ["${var.alb_controller_namespace}:${var.alb_controller_sa_name}"]
+    }
+  }
+  policies = {
+    alb_controller = aws_iam_policy.alb_ingress_policy.arn
+  }
 }
-
 
 resource "helm_release" "alb_ingress_controller" {
   atomic          = true
