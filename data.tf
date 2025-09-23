@@ -301,6 +301,7 @@ data "aws_iam_policy_document" "alb_controller_policy_doc" {
       "elasticloadbalancing:AddListenerCertificates",
       "elasticloadbalancing:RemoveListenerCertificates",
       "elasticloadbalancing:ModifyRule",
+      "elasticloadbalancing:SetRulePriorities",
     ]
   }
 }
