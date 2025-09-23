@@ -4,7 +4,7 @@ resource "aws_iam_policy" "alb_ingress_policy" {
 }
 
 module "alb_ingress_role" {
-  source          = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
+  source          = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts"
   version         = "6.2.1"
   name            = "alb-ingress-controller-role"
   use_name_prefix = true
