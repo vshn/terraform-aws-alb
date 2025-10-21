@@ -1,7 +1,10 @@
 # Changelog
 
+## v1.14.2
+- Update terraform-aws-modules/iam/aws to v6.2.2
+
 ## v1.14.1
-- - Add elasticloadbalancing:SetRulePriorities to policy doc
+- Add elasticloadbalancing:SetRulePriorities to policy doc
 
 ## v1.14.0
 - Update terraform-aws-modules/iam/aws to v6.2.1
